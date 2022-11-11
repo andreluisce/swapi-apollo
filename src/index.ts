@@ -15,7 +15,7 @@ const apiHost = config.get("serverRuntimeConfig.endpoints.swapiAPI") as string;
 
 const fetcher = getFetcher(apiHost);
 
-const PORT = config.get("serverRuntimeConfig.ports.localServer");
+const PORT = process.env.PORT || config.get("serverRuntimeConfig.ports.localServer");
 const app = express();
 app.use(bodyParser.json());
 app.use("/static", express.static("assets"));
@@ -30,7 +30,9 @@ const schema = makeExecutableSchema({
 });
 const server = new ApolloServer({
   schema,
-  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
+  persistedQueries: false,
+  introspection: process.env.NODE_ENV !== 'production',
+  plugins: [process.env.NODE_ENV !== 'production' && ApolloServerPluginLandingPageGraphQLPlayground()].filter(Boolean),
 });
 
 server.start().then(() => {
