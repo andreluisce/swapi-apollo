@@ -9,8 +9,9 @@
     "declaration": false,
     "noImplicitAny": false,
     "skipLibCheck": true,
+    "baseUrl": "./",
     "rootDir": "./",
-    "outDir": "./src/lambda/dist",
+    "outDir": "./src/lambda",
     "allowSyntheticDefaultImports": true,
     "pretty": true,
     "removeComments": true,
@@ -20,6 +21,5 @@
   },
   "exclude": [
     "node_modules",
-    "dist"
   ]
 }

@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2015",
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
     "isolatedModules": true,
-    "sourceMap": true,
-    "declaration": true,
+    "sourceMap": false,
+    "declaration": false,
     "noImplicitAny": false,
     "skipLibCheck": true,
     "rootDir": "./",
@@ -15,7 +15,7 @@
     "pretty": true,
     "removeComments": true,
     "lib":[
-      "esnext"
+      "ES2015"
     ]
   },
   "exclude": [
