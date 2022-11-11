@@ -1,10 +1,11 @@
 import { getPageFetcher } from '../connectors/swapi'
+import createImageUrl from '../utils/createImageUrl'
 
 const path = '/films/'
 
 export default (fetch) => ({
   RootQuery: {
-      allFilms: (_, params) => getPageFetcher(fetch)(path, params.offset, params.limit),
+      allFilms: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       film: (_, params) => fetch(params.id || `${path}${params.filmID}/`),
   },
   Film: {
@@ -12,6 +13,7 @@ export default (fetch) => ({
     episodeID: (film) => film.episode_id,
     openingCrawl: (film) => film.opening_crawl,
     releaseDate: (film) => film.release_date,
+    imageUrl: (film) => createImageUrl('films', film.episode_id),
     details: (film) => ({
       species: film.species,
       starships: film.starships,

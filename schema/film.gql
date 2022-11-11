@@ -17,4 +17,5 @@ type Film implements Node {
   edited: String
   details: FilmDetails
   id: ID!
+  imageUrl: String
 }

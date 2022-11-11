@@ -15,4 +15,5 @@ type Person implements Node {
   created: String
   edited: String
   id: ID!
+  imageUrl: String
 }

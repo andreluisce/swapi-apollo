@@ -13,5 +13,5 @@ type Planet implements Node {
   created: String
   edited: String
   id: ID!
+  imageUrl: String
 }
-

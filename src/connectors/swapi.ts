@@ -6,7 +6,7 @@ export interface IFetcher {
 }
 
 export const getFetcher = (rootURL?: string): IFetcher => {
-  const apiRoot = rootURL || 'http://swapi.co/api'
+  const apiRoot = rootURL;
 
   return (resource: string): Promise<any> => {
     const url = resource.indexOf(apiRoot) === 0 ? resource : apiRoot + resource
@@ -30,14 +30,15 @@ export const getLoader = (fetch: IFetcher) => {
     }, {batch: false})
 }
 
-export const getPageFetcher = (fetch: IFetcher) => (resource: string, offset?: number, limit?: number) => {
+export const getPageFetcher = (fetch: IFetcher) => (resource: string, search?: string, offset?: number, limit?: number) => {
   let results = []
   let index = 0
   const size = limit || 0
 
   function pagination(pageURL: string) {
+    const urlApi = search ? `${pageURL}?search=${search}`: pageURL;
     return new Promise<any>((resolve, reject) => {
-      fetch(pageURL).then((data) => {
+      fetch(urlApi).then((data) => {
         // fast forward until offset is reached
         if (offset && results.length === 0) {
           if (index + data.results.length > offset) {

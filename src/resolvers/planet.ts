@@ -1,10 +1,11 @@
 import { getPageFetcher } from '../connectors/swapi'
+import createImageUrl from '../utils/createImageUrl'
 
 const path = '/planets/'
 
 export default (fetch) => ({
   RootQuery: {
-      allPlanets: (_, params) => getPageFetcher(fetch)(path, params.offset, params.limit),
+      allPlanets: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       planet: (_, params) => fetch(params.id || `${path}${params.planetID}/`),
   },
   Planet: {
@@ -14,5 +15,6 @@ export default (fetch) => ({
     surfaceWater: (planet) => planet.surface_water,
     residents: (planet, _, context) => context.loader.loadMany(planet.residents),
     films: (planet, _, context) => context.loader.loadMany(planet.films),
+    imageUrl: (planet) => createImageUrl('planets', planet.url.replace(/\D/g, '')),
   },
 })

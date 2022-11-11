@@ -1,10 +1,11 @@
 import { getPageFetcher } from '../connectors/swapi'
+import createImageUrl from '../utils/createImageUrl'
 
 const path = '/starships/'
 
 export default (fetch) => ({
   RootQuery: {
-      allStarships: (_, params) => getPageFetcher(fetch)(path, params.offset, params.limit),
+      allStarships: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       starship: (_, params) => fetch(params.id || `${path}${params.starshipID}/`),
   },
   Starship: {
@@ -16,5 +17,6 @@ export default (fetch) => ({
     starshipClass: (starship) => starship.starship_class,
     pilots: (starship, _, context) => context.loader.loadMany(starship.pilots),
     films: (starship, _, context) => context.loader.loadMany(starship.films),
+    imageUrl: (starship) => createImageUrl('starships', starship.url.replace(/\D/g, '')),
   },
 })

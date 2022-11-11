@@ -1,10 +1,11 @@
 import { getPageFetcher } from '../connectors/swapi'
+import createImageUrl from '../utils/createImageUrl'
 
 const path = '/people/'
 
 export default (fetch) => ({
   RootQuery: {
-      allPeople: (_, params) => getPageFetcher(fetch)(path, params.offset, params.limit),
+      allPeople: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       person: (_, params) => fetch(params.id || `${path}${params.personID}/`),
   },
   Person: {
@@ -18,5 +19,6 @@ export default (fetch) => ({
     species: (person, _, context) => context.loader.loadMany(person.species),
     starships: (person, _, context) => context.loader.loadMany(person.starships),
     vehicles: (person, _, context) => context.loader.loadMany(person.vehicles),
+    imageUrl: (person) => createImageUrl('people', person.url.replace(/\D/g, '')),
   },
 })
