@@ -1,5 +1,7 @@
 type Starship implements Node {
+  id: ID!
   name: String
+  imageUrl: String
   model: String
   starshipClass: String
   manufacturers: [String]
@@ -16,8 +18,6 @@ type Starship implements Node {
   films: [Film]
   created: String
   edited: String
-  id: ID!
-  imageUrl: String
 }
 
 type Query {

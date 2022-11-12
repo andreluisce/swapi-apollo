@@ -1,5 +1,7 @@
 type Person implements Node {
+  id: ID!
   name: String
+  imageUrl: String
   birthYear: String
   eyeColor: String
   gender: String
@@ -14,8 +16,6 @@ type Person implements Node {
   vehicles: [Vehicle]
   created: String
   edited: String
-  id: ID!
-  imageUrl: String
 }
 
 type Query {

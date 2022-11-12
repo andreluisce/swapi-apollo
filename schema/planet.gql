@@ -1,5 +1,7 @@
 type Planet implements Node {
+  id: ID!
   name: String
+  imageUrl: String
   diameter: Int
   rotationPeriod: Int
   orbitalPeriod: Int
@@ -12,8 +14,6 @@ type Planet implements Node {
   films: [Film]
   created: String
   edited: String
-  id: ID!
-  imageUrl: String
 }
 
 type Query {

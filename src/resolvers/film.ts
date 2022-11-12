@@ -9,8 +9,9 @@ export default (fetch) => ({
       film: (_, params) => fetch(params.id || `${path}${params.filmID}/`),
   },
   Film: {
-    id: (film) => film.url,
+    id: (film) => film.url.replace(/\D/g, ''),
     episodeID: (film) => film.episode_id,
+    name: (film) => film.title,
     openingCrawl: (film) => film.opening_crawl,
     releaseDate: (film) => film.release_date,
     imageUrl: (film) => createImageUrl('films', film.episode_id),

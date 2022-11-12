@@ -1,5 +1,7 @@
 type Species implements Node {
+  id: ID!
   name: String
+  imageUrl: String
   classification: String
   designation: String
   averageHeight: Float
@@ -13,8 +15,6 @@ type Species implements Node {
   films: [Film]
   created: String
   edited: String
-  id: ID!
-  imageUrl: String
 }
 
 type Query {

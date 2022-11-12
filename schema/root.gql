@@ -1,5 +1,9 @@
 interface Node {
   id: ID!
+  name: String
+  imageUrl: String
+  created: String
+  edited: String
 }
 
 type RootQuery {

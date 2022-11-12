@@ -8,7 +8,7 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 
-import { getFetcher } from "./connectors/swapi";
+import { getFetcher, getLoader } from "./connectors/swapi";
 import getResolversWithFetchers from "./resolvers/index";
 
 const apiHost = config.get("serverRuntimeConfig.endpoints.swapiAPI") as string;
@@ -30,6 +30,9 @@ const schema = makeExecutableSchema({
 });
 const server = new ApolloServer({
   schema,
+   context: {
+    loader: getLoader(fetcher),
+},
   persistedQueries: false,
   introspection: process.env.NODE_ENV !== 'production',
   plugins: [process.env.NODE_ENV !== 'production' && ApolloServerPluginLandingPageGraphQLPlayground()].filter(Boolean),

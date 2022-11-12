@@ -1,5 +1,7 @@
 type Vehicle implements Node {
+  id: ID!
   name: String
+  imageUrl: String
   model: String
   vehicleClass: String
   manufacturers: [String]
@@ -14,8 +16,6 @@ type Vehicle implements Node {
   films: [Film]
   created: String
   edited: String
-  id: ID!
-  imageUrl: String
 }
 
 type Query {

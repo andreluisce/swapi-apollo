@@ -10,7 +10,7 @@ export const getFetcher = (rootURL?: string): IFetcher => {
 
   return (resource: string): Promise<any> => {
     const url = resource.indexOf(apiRoot) === 0 ? resource : apiRoot + resource
-
+    
     return new Promise<any>((resolve, reject) => {
       console.log(`fetch: ${url}`)
       request.get(url, (err, resp, body) => {
