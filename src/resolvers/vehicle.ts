@@ -4,12 +4,12 @@ import createImageUrl from '../utils/createImageUrl'
 const path = '/vehicles/'
 
 export default (fetch) => ({
-  RootQuery: {
+  Query: {
       allVehicles: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       vehicle: (_, params) => fetch(params.id || `${path}${params.vehicleID}/`),
   },
   Vehicle: {
-    id: (vehicle) => vehicle.url,
+    id: (vehicle) => vehicle.url.replace(/\D/g, ''),
     costInCredits: (vehicle) => vehicle.cost_in_credits,
     maxAtmospheringSpeed: (vehicle) => vehicle.max_atmosphering_speed,
     cargoCapacity: (vehicle) => vehicle.cargo_capacity,

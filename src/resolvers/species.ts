@@ -4,12 +4,12 @@ import createImageUrl from '../utils/createImageUrl'
 const path = '/species/'
 
 export default (fetch) => ({
-  RootQuery: {
+  Query: {
       allSpecies: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       species: (_, params) => fetch(params.id || `${path}${params.speciesID}/`),
   },
   Species: {
-    id: (species) => species.url,
+    id: (species) => species.url.replace(/\D/g, ''),
     averageHeight: (species) => species.average_height,
     skinColors: (species) => species.skin_colors.split(','),
     hairColors: (species) => species.hair_colors.split(','),

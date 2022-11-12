@@ -15,3 +15,8 @@ type Planet implements Node {
   id: ID!
   imageUrl: String
 }
+
+type Query {
+  allPlanets(search: String, offset: Int, limit: Int): [Planet]
+  planet(id: ID, planetID: ID): Planet
+}

@@ -4,12 +4,12 @@ import createImageUrl from '../utils/createImageUrl'
 const path = '/starships/'
 
 export default (fetch) => ({
-  RootQuery: {
+  Query: {
       allStarships: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       starship: (_, params) => fetch(params.id || `${path}${params.starshipID}/`),
   },
   Starship: {
-    id: (starship) => starship.url,
+    id: (starship) => starship.url.replace(/\D/g, ''),
     costInCredits: (starship) => starship.cost_in_credits,
     maxAtmospheringSpeed: (starship) => starship.max_atmosphering_speed,
     cargoCapacity: (starship) => starship.cargo_capacity,

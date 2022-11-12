@@ -15,14 +15,14 @@ export default (fetch: IFetcher) => Object.assign(
     starship(fetch),
     vehicle(fetch),
     {
-        RootQuery: Object.assign(
+        Query: Object.assign(
             {},
-            film(fetch).RootQuery,
-            people(fetch).RootQuery,
-            planet(fetch).RootQuery,
-            species(fetch).RootQuery,
-            starship(fetch).RootQuery,
-            vehicle(fetch).RootQuery,
+            film(fetch).Query,
+            people(fetch).Query,
+            planet(fetch).Query,
+            species(fetch).Query,
+            starship(fetch).Query,
+            vehicle(fetch).Query,
         ),
     },
 )

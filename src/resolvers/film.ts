@@ -4,7 +4,7 @@ import createImageUrl from '../utils/createImageUrl'
 const path = '/films/'
 
 export default (fetch) => ({
-  RootQuery: {
+  Query: {
       allFilms: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
       film: (_, params) => fetch(params.id || `${path}${params.filmID}/`),
   },

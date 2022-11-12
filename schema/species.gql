@@ -16,3 +16,8 @@ type Species implements Node {
   id: ID!
   imageUrl: String
 }
+
+type Query {
+  allSpecies(search: String, offset: Int, limit: Int): [Species]
+  species(id: ID, speciesID: ID): Species
+}
