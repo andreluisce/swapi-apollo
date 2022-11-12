@@ -22,5 +22,5 @@ type Film implements Node {
 
 type Query {
   allFilms(search: String, offset: Int, limit: Int): [Film]
-  film(id: ID, filmID: ID): Film
+  film(id: ID): Film
 }

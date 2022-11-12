@@ -18,5 +18,5 @@ type Planet implements Node {
 
 type Query {
   allPlanets(search: String, offset: Int, limit: Int): [Planet]
-  planet(id: ID, planetID: ID): Planet
+  planet(id: ID): Planet
 }

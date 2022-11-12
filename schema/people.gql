@@ -20,5 +20,5 @@ type Person implements Node {
 
 type Query {
   allPeople(search: String, offset: Int, limit: Int): [Person]
-  person(id: ID, personID: ID): Person
+  person(id: ID): Person
 }

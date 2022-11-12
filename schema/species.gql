@@ -19,5 +19,5 @@ type Species implements Node {
 
 type Query {
   allSpecies(search: String, offset: Int, limit: Int): [Species]
-  species(id: ID, speciesID: ID): Species
+  species(id: ID): Species
 }

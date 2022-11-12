@@ -22,5 +22,5 @@ type Starship implements Node {
 
 type Query {
   allStarships(search: String, offset: Int, limit: Int): [Starship]
-  starship(id: ID, starshipID: ID): Starship
+  starship(id: ID): Starship
 }

@@ -6,7 +6,7 @@ const path = '/starships/'
 export default (fetch) => ({
   Query: {
       allStarships: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
-      starship: (_, params) => fetch(params.id || `${path}${params.starshipID}/`),
+      starship: (_, params) => fetch(`${path}${params.id}/`),
   },
   Starship: {
     id: (starship) => starship.url.replace(/\D/g, ''),

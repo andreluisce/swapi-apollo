@@ -6,7 +6,7 @@ const path = '/people/'
 export default (fetch) => ({
   Query: {
       allPeople: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
-      person: (_, params) => fetch(params.id || `${path}${params.personID}/`),
+      person: (_, params) => fetch(`${path}${params.id}/`),
   },
   Person: {
     id: (person) => person.url.replace(/\D/g, ''),

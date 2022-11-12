@@ -6,7 +6,7 @@ const path = '/vehicles/'
 export default (fetch) => ({
   Query: {
       allVehicles: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
-      vehicle: (_, params) => fetch(params.id || `${path}${params.vehicleID}/`),
+      vehicle: (_, params) => fetch(`${path}${params.id}/`),
   },
   Vehicle: {
     id: (vehicle) => vehicle.url.replace(/\D/g, ''),

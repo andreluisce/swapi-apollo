@@ -20,5 +20,5 @@ type Vehicle implements Node {
 
 type Query {
   allVehicles(search: String, offset: Int, limit: Int): [Vehicle]
-  vehicle(id: ID, vehicleID: ID): Vehicle
+  vehicle(id: ID): Vehicle
 }

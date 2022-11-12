@@ -6,7 +6,7 @@ const path = '/films/'
 export default (fetch) => ({
   Query: {
       allFilms: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
-      film: (_, params) => fetch(params.id || `${path}${params.filmID}/`),
+      film: (_, params) => fetch(`${path}${params.id}/`),
   },
   Film: {
     id: (film) => film.url.replace(/\D/g, ''),

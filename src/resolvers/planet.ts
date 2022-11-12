@@ -6,7 +6,7 @@ const path = '/planets/'
 export default (fetch) => ({
   Query: {
       allPlanets: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
-      planet: (_, params) => fetch(params.id || `${path}${params.planetID}/`),
+      planet: (_, params) => fetch(`${path}${params.id}/`),
   },
   Planet: {
     id: (planet) => planet.url.replace(/\D/g, ''),

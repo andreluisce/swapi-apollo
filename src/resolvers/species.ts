@@ -6,7 +6,7 @@ const path = '/species/'
 export default (fetch) => ({
   Query: {
       allSpecies: (_, params) => getPageFetcher(fetch)(path, params.search, params.offset, params.limit),
-      species: (_, params) => fetch(params.id || `${path}${params.speciesID}/`),
+      species: (_, params) => fetch(`${path}${params.id}/`),
   },
   Species: {
     id: (species) => species.url.replace(/\D/g, ''),
