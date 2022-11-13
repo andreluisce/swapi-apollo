@@ -1,21 +1,28 @@
-type Vehicle implements Node {
-  id: ID!
-  name: String
-  imageUrl: String
+type VehicleAttributes {
   model: String
   vehicleClass: String
   manufacturers: [String]
-  costInCredits: Int
-  length: Float
+  costInCredits: String
+  length: String
   crew: String
   passengers: String
-  maxAtmospheringSpeed: Int
-  cargoCapacity: Int
+  maxAtmospheringSpeed: String
+  cargoCapacity: String
   consumables: String
+}
+
+type VehicleAssociations {
   pilots: [Person]
   films: [Film]
-  created: String
-  edited: String
+}
+
+type Vehicle implements Node {
+  id: ID!
+  name: String
+  entity: EntityEnum
+  imageEntity: ImageEntity
+  attributes: VehicleAttributes
+  associations: VehicleAssociations
 }
 
 type Query {

@@ -1,19 +1,25 @@
+type PlanetAttributes {
+  diameter: String
+  rotationPeriod: String
+  orbitalPeriod: String
+  gravity: String
+  population: String
+  climates: [String]
+  terrains: [String]
+  surfaceWater: String
+}
+
+type PlanetAssociations {
+  residents: [Person]
+  films: [Film]
+}
 type Planet implements Node {
   id: ID!
   name: String
-  imageUrl: String
-  diameter: Int
-  rotationPeriod: Int
-  orbitalPeriod: Int
-  gravity: String
-  population: Int
-  climates: [String]
-  terrains: [String]
-  surfaceWater: Float
-  residents: [Person]
-  films: [Film]
-  created: String
-  edited: String
+  entity: EntityEnum
+  imageEntity: ImageEntity
+  attributes: PlanetAttributes
+  associations: PlanetAssociations
 }
 
 type Query {

@@ -1,9 +1,8 @@
 interface Node {
   id: ID!
   name: String
-  imageUrl: String
-  created: String
-  edited: String
+  entity: EntityEnum
+  imageEntity: ImageEntity
 }
 
 type RootQuery {

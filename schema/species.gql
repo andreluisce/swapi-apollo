@@ -1,20 +1,27 @@
-type Species implements Node {
-  id: ID!
-  name: String
-  imageUrl: String
+type SpeciesAssociations {
+  people: [Person]
+  films: [Film]
+}
+
+type SpeciesAttributes {
   classification: String
   designation: String
-  averageHeight: Float
-  averageLifespan: Int
+  averageHeight: String
+  averageLifespan: String
   eyeColors: [String]
   hairColors: [String]
   skinColors: [String]
   language: String
   homeworld: Planet
-  people: [Person]
-  films: [Film]
-  created: String
-  edited: String
+}
+
+type Species implements Node {
+  id: ID!
+  name: String
+  entity: EntityEnum
+  imageEntity: ImageEntity
+  associations: SpeciesAssociations
+  attributes: SpeciesAttributes
 }
 
 type Query {

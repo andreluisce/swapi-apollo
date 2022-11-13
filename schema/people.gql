@@ -1,21 +1,27 @@
-type Person implements Node {
-  id: ID!
-  name: String
-  imageUrl: String
+type PersonAttributes {
   birthYear: String
   eyeColor: String
   gender: String
   hairColor: String
-  height: Int
-  mass: Int
+  height: String
+  mass: String
   skinColor: String
   homeworld: Planet
-  films: [Film]
+}
+type PersonAssociations {
   species: [Species]
   starships: [Starship]
   vehicles: [Vehicle]
-  created: String
-  edited: String
+  films: [Film]
+}
+
+type Person implements Node {
+  id: ID!
+  name: String
+  entity: EntityEnum
+  imageEntity: ImageEntity
+  associations: PersonAssociations
+  attributes: PersonAttributes
 }
 
 type Query {

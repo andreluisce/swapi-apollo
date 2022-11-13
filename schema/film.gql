@@ -1,4 +1,19 @@
-type FilmDetails {
+enum EntityEnum {
+  films
+  people
+  planets
+  species
+  starships
+  vehicles
+}
+
+type ImageEntity {
+  width: Int
+  height: Int
+  placeholderPath: String
+  imageUrl: String
+}
+type FilmAssociations {
   species: [Species]
   starships: [Starship]
   vehicles: [Vehicle]
@@ -6,18 +21,21 @@ type FilmDetails {
   planets: [Planet]
 }
 
-type Film implements Node {
-  id: ID!
-  name: String
-  imageUrl: String
+type FilmAttributes {
   episodeID: Int
   openingCrawl: String
   director: String
   producers: [String]
   releaseDate: String
-  created: String
-  edited: String
-  details: FilmDetails
+}
+
+type Film implements Node {
+  id: ID!
+  name: String
+  entity: EntityEnum
+  imageEntity: ImageEntity
+  attributes: FilmAttributes
+  associations: FilmAssociations
 }
 
 type Query {

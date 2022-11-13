@@ -1,23 +1,30 @@
-type Starship implements Node {
-  id: ID!
-  name: String
-  imageUrl: String
+type StarshipsAssociations {
+  pilots: [Person]
+  films: [Film]
+}
+
+type StarshipsAttributes {
   model: String
   starshipClass: String
   manufacturers: [String]
-  costInCredits: Float
-  length: Float
+  costInCredits: String
+  length: String
   crew: String
   passengers: String
-  maxAtmospheringSpeed: Int
-  hyperdriveRating: Float
-  MGLT: Int
-  cargoCapacity: Float
+  maxAtmospheringSpeed: String
+  hyperdriveRating: String
+  MGLT: String
+  cargoCapacity: String
   consumables: String
-  pilots: [Person]
-  films: [Film]
-  created: String
-  edited: String
+}
+
+type Starship implements Node {
+  id: ID!
+  name: String
+  entity: EntityEnum
+  imageEntity: ImageEntity
+  attributes: StarshipsAttributes
+  associations: StarshipsAssociations
 }
 
 type Query {
