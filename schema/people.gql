@@ -15,6 +15,11 @@ type PersonAssociations {
   films: [Film]
 }
 
+type AllReturnPerson {
+  count: Int
+  results: [Person]
+}
+
 type Person implements Node {
   id: ID!
   name: String
@@ -25,6 +30,6 @@ type Person implements Node {
 }
 
 type Query {
-  allPeople(search: String, offset: Int, limit: Int): [Person]
+  allPeople(search: String, offset: Int, limit: Int): AllReturnPerson
   person(id: ID): Person
 }

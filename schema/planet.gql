@@ -9,6 +9,11 @@ type PlanetAttributes {
   surfaceWater: String
 }
 
+type AllReturnPlanet {
+  count: Int
+  results: [Planet]
+}
+
 type PlanetAssociations {
   residents: [Person]
   films: [Film]
@@ -23,6 +28,6 @@ type Planet implements Node {
 }
 
 type Query {
-  allPlanets(search: String, offset: Int, limit: Int): [Planet]
+  allPlanets(search: String, offset: Int, limit: Int): AllReturnPlanet
   planet(id: ID): Planet
 }
