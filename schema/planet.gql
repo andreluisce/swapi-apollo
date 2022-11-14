@@ -11,6 +11,7 @@ type PlanetAttributes {
 
 type AllReturnPlanet {
   count: Int
+  page: Int
   results: [Planet]
 }
 

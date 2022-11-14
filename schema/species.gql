@@ -17,6 +17,7 @@ type SpeciesAttributes {
 
 type AllReturnSpecies {
   count: Int
+  page: Int
   results: [Species]
 }
 

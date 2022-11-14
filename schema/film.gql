@@ -38,7 +38,13 @@ type Film implements Node {
   associations: FilmAssociations
 }
 
+type AllReturnFilm {
+  count: Int
+  page: Int
+  results: [Film]
+}
+
 type Query {
-  allFilms(search: String, offset: Int, limit: Int): [Film]
+  allFilms(search: String, offset: Int, limit: Int): AllReturnFilm
   film(id: ID): Film
 }

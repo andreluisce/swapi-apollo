@@ -29,6 +29,7 @@ type Starship implements Node {
 
 type AllReturnStarship {
   count: Int
+  page: Int
   results: [Starship]
 }
 

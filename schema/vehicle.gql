@@ -27,6 +27,7 @@ type Vehicle implements Node {
 
 type AllReturnVehicle {
   count: Int
+  page: Int
   results: [Vehicle]
 }
 

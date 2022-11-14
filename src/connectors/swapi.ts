@@ -49,6 +49,7 @@ export const getPageFetcher =
       return new Promise<any>((resolve, reject) => {
         fetch(urlApi).then((data) => {
           
+          debugger
 
           // fast forward until offset is reached
           if (offset && results.length === 0) {
@@ -59,7 +60,7 @@ export const getPageFetcher =
               index = index + data.results.length;
               pagination(data.next).then(resolve);
             } else {
-              resolve({ results, count: data.count });
+              resolve({ results, count: data.count, page: index? (index / 10): 1 });
             }
           } else {
             if (size > 0 && size - results.length - data.results.length < 0) {
@@ -72,7 +73,7 @@ export const getPageFetcher =
             if (data.next && (size === 0 || size - results.length > 0)) {
               pagination(data.next).then(resolve);
             } else {
-              resolve({ results, count: data.count });
+              resolve({ results, count: data.count, page: index? (index / 10): 1 });
             }
           }
         });

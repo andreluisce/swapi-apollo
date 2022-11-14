@@ -17,6 +17,7 @@ type PersonAssociations {
 
 type AllReturnPerson {
   count: Int
+  page: Int
   results: [Person]
 }
 
