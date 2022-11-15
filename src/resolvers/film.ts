@@ -10,7 +10,10 @@ export default (fetch) => ({
     film: (_, params) => fetch(`${path}${params.id}/`),
   },
   Film: {
-    id: (film) => film.url.replace(/\D/g, ""),
+    id: (film) => {
+      console.log(">>>>>>>>>>>>>>",film) 
+      return film?.url?.replace?.(/\D/g, "")
+    },
     name: (film) => film.title,
     
     entity: () => "films",

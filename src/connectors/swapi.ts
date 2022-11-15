@@ -1,4 +1,8 @@
-import * as request from "request";
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
+import axios from "axios";
+import https from 'https';
+
 const DataLoader = require("dataloader");
 
 export interface IFetcher {
@@ -11,13 +15,14 @@ export const getFetcher = (rootURL?: string): IFetcher => {
   return (resource: string): Promise<any> => {
     const url = resource.indexOf(apiRoot) === 0 ? resource : apiRoot + resource;
 
-    return new Promise<any>((resolve, reject) => {
-      console.log(`fetch: ${url}`);
-      request.get(url, (err, resp, body) => {
-        console.log(`fetch: ${url} completed`);
-        err ? reject(err) : resolve(JSON.parse(body));
-      });
+    const agent = new https.Agent({  
+      rejectUnauthorized: false
     });
+
+    return axios.get(url,  { httpsAgent: agent })
+    .then((response) => response.data)
+    .catch(err => console.log(err));
+
   };
 };
 
@@ -48,9 +53,6 @@ export const getPageFetcher =
         : pageURL;
       return new Promise<any>((resolve, reject) => {
         fetch(urlApi).then((data) => {
-          
-          debugger
-
           // fast forward until offset is reached
           if (offset && results.length === 0) {
             if (index + data.results.length > offset) {

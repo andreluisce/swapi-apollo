@@ -27,13 +27,7 @@ type Starship implements Node {
   associations: StarshipsAssociations
 }
 
-type AllReturnStarship {
-  count: Int
-  page: Int
-  results: [Starship]
-}
-
 type Query {
-  allStarships(search: String, offset: Int, limit: Int): AllReturnStarship
+  allStarships(search: String, offset: Int, limit: Int): AllReturn
   starship(id: ID): Starship
 }

@@ -15,12 +15,6 @@ type SpeciesAttributes {
   homeworld: Planet
 }
 
-type AllReturnSpecies {
-  count: Int
-  page: Int
-  results: [Species]
-}
-
 type Species implements Node {
   id: ID!
   name: String
@@ -31,6 +25,6 @@ type Species implements Node {
 }
 
 type Query {
-  allSpecies(search: String, offset: Int, limit: Int): AllReturnSpecies
+  allSpecies(search: String, offset: Int, limit: Int): AllReturn
   species(id: ID): Species
 }

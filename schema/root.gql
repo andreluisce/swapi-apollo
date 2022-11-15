@@ -1,3 +1,11 @@
+union Item = Person | Film | Planet | Species | Vehicle | Starship
+
+type AllReturn {
+  count: Int
+  page: Int
+  results: [Item]
+}
+
 interface Node {
   id: ID!
   name: String

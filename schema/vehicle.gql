@@ -25,13 +25,7 @@ type Vehicle implements Node {
   associations: VehicleAssociations
 }
 
-type AllReturnVehicle {
-  count: Int
-  page: Int
-  results: [Vehicle]
-}
-
 type Query {
-  allVehicles(search: String, offset: Int, limit: Int): AllReturnVehicle
+  allVehicles(search: String, offset: Int, limit: Int): AllReturn
   vehicle(id: ID): Vehicle
 }
